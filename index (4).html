@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Blog Personnel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+        }
+
+        #articlesContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .article {
+            background-color: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* Style pour afficher un article seul */
+        #articleContent {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        #backButton {
+            display: none;
+            margin: 20px auto;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    frederic Blog
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Rechercher un article..." onkeyup="searchArticles()">
+</div>
+
+<button id="backButton" onclick="showAllArticles()">← Retour aux articles</button>
+
+<div id="articleContent">
+    <h2 id="articleTitle"></h2>
+    <p id="articleFullContent"></p>
+</div>
+
+<div id="articlesContainer"></div>
+
+<script>
+// Liste d'articles simulée
+const articles = [
+    { title: "Article 1 : Introduction à la programmation", content: "Voici le contenu du premier article. Il parle de l'introduction à la programmation." },
+    { title: "Article 2 : Les bases du JavaScript", content: "Dans cet article, nous abordons les bases du JavaScript et son utilisation." },
+    { title: "Article 3 : Les outils de développement web", content: "Cet article explique les outils essentiels pour le développement web, y compris les IDE et les navigateurs." },
+    { title: "Article 4 : Le HTML et le CSS", content: "Le HTML et le CSS sont les bases du développement web. Cet article couvre leur utilisation." },
+    { title: "Article 5 : Le Responsive Design", content: "Le responsive design est essentiel pour rendre un site compatible avec différents appareils. Découvrez les meilleures pratiques." }
+];
+
+// Fonction pour afficher tous les articles
+function displayArticles(filteredArticles) {
+    const articlesContainer = document.getElementById("articlesContainer");
+    articlesContainer.innerHTML = "";
+    document.getElementById("articleContent").style.display = "none";
+    document.getElementById("backButton").style.display = "none";
+    articlesContainer.style.display = "flex";
+
+    filteredArticles.forEach(article => {
+        const articleElement = document.createElement("div");
+        articleElement.classList.add("article");
+
+        const title = document.createElement("h3");
+        title.innerText = article.title;
+
+        const contentPreview = document.createElement("p");
+        contentPreview.innerText = article.content.substring(0, 100) + "...";
+
+        articleElement.appendChild(title);
+        articleElement.appendChild(contentPreview);
+
+        articleElement.addEventListener("click", function() {
+            displayArticleContent(article);
+        });
+
+        articlesContainer.appendChild(articleElement);
+    });
+}
+
+// Fonction pour afficher un seul article
+function displayArticleContent(article) {
+    document.getElementById("articleTitle").innerText = article.title;
+    document.getElementById("articleFullContent").innerText = article.content;
+    document.getElementById("articleContent").style.display = "block";
+    document.getElementById("articlesContainer").style.display = "none";
+    document.getElementById("backButton").style.display = "block";
+}
+
+// Fonction pour revenir à la liste des articles
+function showAllArticles() {
+    displayArticles(articles);
+}
+
+// Fonction de recherche
+function searchArticles() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filteredArticles = articles.filter(article => 
+        article.title.toLowerCase().includes(query) || 
+        article.content.toLowerCase().includes(query)
+    );
+    displayArticles(filteredArticles);
+}
+
+// Initialisation : Afficher tous les articles au départ
+displayArticles(articles);
+</script>
+
+</body>
+</html>
