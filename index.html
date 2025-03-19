@@ -59,6 +59,7 @@
             width: 320px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
         }
 
         .article:hover {
@@ -66,8 +67,15 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
+        .article img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
         h3 {
-            margin: 0;
+            margin: 10px 0;
             font-size: 18px;
             color: #333;
         }
@@ -78,7 +86,6 @@
             margin-top: 5px;
         }
 
-        /* Style pour afficher un article seul */
         #articleContent {
             display: none;
             background-color: white;
@@ -89,6 +96,13 @@
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
             font-size: 18px;
             text-align: center;
+        }
+
+        #articleContent img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
 
         #backButton {
@@ -112,7 +126,7 @@
 <body>
 
 <header>
-    frederic Blog
+    Frederic Blog
 </header>
 
 <div class="search-container">
@@ -122,6 +136,7 @@
 <button id="backButton" onclick="showAllArticles()">← Retour aux articles</button>
 
 <div id="articleContent">
+    <img id="articleImage" src="" alt="">
     <h2 id="articleTitle"></h2>
     <p id="articleFullContent"></p>
 </div>
@@ -129,13 +144,33 @@
 <div id="articlesContainer"></div>
 
 <script>
-// Liste d'articles simulée
+// Liste d'articles avec images
 const articles = [
-    { title: "Article 1 : Introduction à la programmation", content: "Voici le contenu du premier article. Il parle de l'introduction à la programmation." },
-    { title: "Article 2 : Les bases du JavaScript", content: "Dans cet article, nous abordons les bases du JavaScript et son utilisation." },
-    { title: "Article 3 : Les outils de développement web", content: "Cet article explique les outils essentiels pour le développement web, y compris les IDE et les navigateurs." },
-    { title: "Article 4 : Le HTML et le CSS", content: "Le HTML et le CSS sont les bases du développement web. Cet article couvre leur utilisation." },
-    { title: "Article 5 : Le Responsive Design", content: "Le responsive design est essentiel pour rendre un site compatible avec différents appareils. Découvrez les meilleures pratiques." }
+    { 
+        title: "Introduction à la programmation", 
+        content: "Voici le contenu du premier article. Il parle de l'introduction à la programmation.",
+        image: "images/article1.jpg"
+    },
+    { 
+        title: "Les bases du JavaScript", 
+        content: "Dans cet article, nous abordons les bases du JavaScript et son utilisation.", 
+        image: "images/article2.jpg"
+    },
+    { 
+        title: "Les outils de développement web", 
+        content: "Cet article explique les outils essentiels pour le développement web, y compris les IDE et les navigateurs.", 
+        image: "images/article3.jpg"
+    },
+    { 
+        title: "Le HTML et le CSS", 
+        content: "Le HTML et le CSS sont les bases du développement web. Cet article couvre leur utilisation.", 
+        image: "images/article4.jpg"
+    },
+    { 
+        title: "Le Responsive Design", 
+        content: "Le responsive design est essentiel pour rendre un site compatible avec différents appareils. Découvrez les meilleures pratiques.", 
+        image: "images/article5.jpg"
+    }
 ];
 
 // Fonction pour afficher tous les articles
@@ -150,12 +185,17 @@ function displayArticles(filteredArticles) {
         const articleElement = document.createElement("div");
         articleElement.classList.add("article");
 
+        const image = document.createElement("img");
+        image.src = article.image;
+        image.alt = article.title;
+
         const title = document.createElement("h3");
         title.innerText = article.title;
 
         const contentPreview = document.createElement("p");
         contentPreview.innerText = article.content.substring(0, 100) + "...";
 
+        articleElement.appendChild(image);
         articleElement.appendChild(title);
         articleElement.appendChild(contentPreview);
 
@@ -171,6 +211,9 @@ function displayArticles(filteredArticles) {
 function displayArticleContent(article) {
     document.getElementById("articleTitle").innerText = article.title;
     document.getElementById("articleFullContent").innerText = article.content;
+    document.getElementById("articleImage").src = article.image;
+    document.getElementById("articleImage").alt = article.title;
+
     document.getElementById("articleContent").style.display = "block";
     document.getElementById("articlesContainer").style.display = "none";
     document.getElementById("backButton").style.display = "block";
