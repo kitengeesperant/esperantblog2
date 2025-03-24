@@ -1,132 +1,34 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Blog Personnel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <div class="social-icons">
+    <a href="https://www.facebook.com/esperant.kitenge?mibextid=ZbWKwL" target="_blank">
+        <img src="images/facebook.png" alt="Facebook">
+    </a>
+<a href="https://wa.me/243971628469" target="_blank">
+    <img src="images/whatsapp.png" alt="WhatsApp">
+</a>
 
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-container {
-            text-align: center;
-            margin: 20px;
-        }
-
-        input[type="text"] {
-            padding: 12px;
-            font-size: 16px;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: #007bff;
-            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-        }
-
-        #articlesContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        .article {
-            background-color: white;
-            padding: 20px;
-            margin: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 320px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-align: center;
-        }
-
-        .article:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .article img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        h3 {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #333;
-        }
-
-        p {
-            font-size: 14px;
-            color: #555;
-            margin-top: 5px;
-        }
-
-        #articleContent {
-            display: none;
-            background-color: white;
-            padding: 25px;
-            margin: 20px auto;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            font-size: 18px;
-            text-align: center;
-        }
-
-        #articleContent img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        #backButton {
-            display: none;
-            margin: 20px auto;
-            padding: 12px 24px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        #backButton:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <a href="https://www.tiktok.com/@esperant.kitenge" target="_blank">
+        <img src="images/tiktok.png" alt="TikTok">
+    </a>
+    <a href="ndundukitenge@gmail.com">
+        <img src="images/email.png" alt="Email">
+    </a>
+</div>
+    
 </head>
 <body>
 
 <header>
-    Frederic Blog
+    <div class="logo">Frederic Blog</div>
+    <div class="subtext">tutoriels ,science,technologie </div>
 </header>
 
 <div class="search-container">
@@ -141,102 +43,54 @@
     <p id="articleFullContent"></p>
 </div>
 
-<div id="articlesContainer"></div>
+<!-- Conteneur des articles mis à jour -->
+<div id="articlesContainer">
+    <div class="article">
+        <img src="fake-news.jpg" alt="Fake News">
+        <div class="article-content">
+            <h3>Notes de la communauté : un rempart efficace contre la désinformation</h3>
+            <p>Les notes permettent d'évaluer la crédibilité des informations, mais elles restent imparfaites.</p>
+        </div>
+    </div>
 
-<script>
-// Liste d'articles avec images
-const articles = [
-    { 
-        title: "Introduction à la programmation", 
-        content: "Voici le contenu du premier article. Il parle de l'introduction à la programmation.",
-        image: "images/article1.jpg"
-    },
-    { 
-        title: "Les bases du JavaScript", 
-        content: "Dans cet article, nous abordons les bases du JavaScript et son utilisation.", 
-        image: "images/article2.jpg"
-    },
-    { 
-        title: "Les outils de développement web", 
-        content: "Cet article explique les outils essentiels pour le développement web, y compris les IDE et les navigateurs.", 
-        image: "images/article3.jpg"
-    },
-    { 
-        title: "Le HTML et le CSS", 
-        content: "Le HTML et le CSS sont les bases du développement web. Cet article couvre leur utilisation.", 
-        image: "images/article4.jpg"
-    },
-    { 
-        title: "Le Responsive Design", 
-        content: "Le responsive design est essentiel pour rendre un site compatible avec différents appareils. Découvrez les meilleures pratiques.", 
-        image: "images/article5.jpg"
-    }
-];
+    <div class="article">
+        <img src="steam-malware.jpg" alt="Steam Malware">
+        <div class="article-content">
+            <h3>Une démo de jeu sur Steam contenait un malware</h3>
+            <p>Un jeu récemment référencé sur Steam cachait un programme malveillant capable de voler des données.</p>
+        </div>
+    </div>
 
-// Fonction pour afficher tous les articles
-function displayArticles(filteredArticles) {
-    const articlesContainer = document.getElementById("articlesContainer");
-    articlesContainer.innerHTML = "";
-    document.getElementById("articleContent").style.display = "none";
-    document.getElementById("backButton").style.display = "none";
-    articlesContainer.style.display = "flex";
+    <div class="article">
+        <img src="ai-breakthrough.jpg" alt="IA Révolution">
+        <div class="article-content">
+            <h3>L'intelligence artificielle franchit une nouvelle étape</h3>
+            <p>Des chercheurs ont développé un algorithme révolutionnaire capable d'apprendre sans supervision.</p>
+        </div>
+    </div>
+</div>
 
-    filteredArticles.forEach(article => {
-        const articleElement = document.createElement("div");
-        articleElement.classList.add("article");
+<script src="articles.js"></script>
+<script src="script.js"></script>
 
-        const image = document.createElement("img");
-        image.src = article.image;
-        image.alt = article.title;
+<footer>
+  <div class="social-icons">
 
-        const title = document.createElement("h3");
-        title.innerText = article.title;
-
-        const contentPreview = document.createElement("p");
-        contentPreview.innerText = article.content.substring(0, 100) + "...";
-
-        articleElement.appendChild(image);
-        articleElement.appendChild(title);
-        articleElement.appendChild(contentPreview);
-
-        articleElement.addEventListener("click", function() {
-            displayArticleContent(article);
-        });
-
-        articlesContainer.appendChild(articleElement);
-    });
-}
-
-// Fonction pour afficher un seul article
-function displayArticleContent(article) {
-    document.getElementById("articleTitle").innerText = article.title;
-    document.getElementById("articleFullContent").innerText = article.content;
-    document.getElementById("articleImage").src = article.image;
-    document.getElementById("articleImage").alt = article.title;
-
-    document.getElementById("articleContent").style.display = "block";
-    document.getElementById("articlesContainer").style.display = "none";
-    document.getElementById("backButton").style.display = "block";
-}
-
-// Fonction pour revenir à la liste des articles
-function showAllArticles() {
-    displayArticles(articles);
-}
-
-// Fonction de recherche
-function searchArticles() {
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    const filteredArticles = articles.filter(article => 
-        article.title.toLowerCase().includes(query) || 
-        article.content.toLowerCase().includes(query)
-    );
-    displayArticles(filteredArticles);
-}
-
-// Initialisation : Afficher tous les articles au départ
-displayArticles(articles);
-</script>
+    <a href="https://wa.me/243971628469" target="_blank">
+    <img src="images/whatsapp.png" alt="WhatsApp">
+</a>
+    <a href="https://www.facebook.com/esperant.kitenge?mibextid=ZbWKwL" target="_blank">
+        <img src="images/facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.tiktok.com/@esperant.kitenge" target="_blank">
+        <img src="images/tiktok.png" alt="TikTok">
+    </a>
+    <a href="ndundukitenge@gmail.com">
+        <img src="images/email.png" alt="Email">
+    </a>
+  </div>
+  <p>© 2025 Frédéric blog- Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>
