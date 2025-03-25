@@ -3,7 +3,7 @@ const articles = [
         id: 1,
         title: "Introduction à la programmation", 
         content: [
-            "Voici le début du premier article. Il parle de l'introduction à la programmation.",
+            "**Voici le début du premier article. Il parle de l'introduction à la programmation.**",
             { type: "image", src: "images/article1.jpg", alt: "Image d'illustration" },
             "Et voici la suite du contenu, avec une image insérée au milieu.",
             { type: "image", src: "images/article1-2.jpg", alt: "Autre image d'illustration" },
